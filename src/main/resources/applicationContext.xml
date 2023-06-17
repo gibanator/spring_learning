@@ -23,7 +23,8 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="org.ggibizov.springlearn.MusicPlayer">
+          class="org.ggibizov.springlearn.MusicPlayer"
+          scope="prototype">
         <property name="musicList">
             <list value-type="org.ggibizov.springlearn.Music">
                 <ref bean= "rapMusic"/>
