@@ -11,4 +11,9 @@
           class="org.ggibizov.springlearn.RapMusic">
     </bean>
 
+    <bean id="musicPlayer"
+          class="org.ggibizov.springlearn.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
+    </bean>
+
 </beans>
