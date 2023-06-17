@@ -13,7 +13,10 @@
           class="org.ggibizov.springlearn.RapMusic">
     </bean>
     <bean id="classicalMusic"
-          class="org.ggibizov.springlearn.ClassicalMusic">
+          class="org.ggibizov.springlearn.ClassicalMusic"
+          init-method="onInit"
+          destroy-method="onDestroy">
+
     </bean>
     <bean id="popMusic"
           class="org.ggibizov.springlearn.PopMusic">
@@ -22,19 +25,19 @@
           class="org.ggibizov.springlearn.RockMusic">
     </bean>
 
-    <bean id="musicPlayer"
-          class="org.ggibizov.springlearn.MusicPlayer"
-          scope="prototype">
-        <property name="musicList">
-            <list value-type="org.ggibizov.springlearn.Music">
-                <ref bean= "rapMusic"/>
-                <ref bean="rockMusic"/>
-                <ref bean="popMusic"/>
-                <ref bean="classicalMusic"/>
-            </list>
-        </property>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+<!--    <bean id="musicPlayer"-->
+<!--          class="org.ggibizov.springlearn.MusicPlayer"-->
+<!--          scope="prototype">-->
+<!--        <property name="musicList">-->
+<!--            <list value-type="org.ggibizov.springlearn.Music">-->
+<!--                <ref bean= "rapMusic"/>-->
+<!--                <ref bean="rockMusic"/>-->
+<!--                <ref bean="popMusic"/>-->
+<!--                <ref bean="classicalMusic"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+<!--    </bean>-->
 
 </beans>
