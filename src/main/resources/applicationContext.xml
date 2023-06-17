@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="musicBean"
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+    <bean id="rapMusic"
           class="org.ggibizov.springlearn.RapMusic">
+    </bean>
+    <bean id="classicalMusic"
+          class="org.ggibizov.springlearn.ClassicalMusic">
+    </bean>
+    <bean id="popMusic"
+          class="org.ggibizov.springlearn.PopMusic">
+    </bean>
+    <bean id="rockMusic"
+          class="org.ggibizov.springlearn.RockMusic">
     </bean>
 
     <bean id="musicPlayer"
           class="org.ggibizov.springlearn.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <property name="musicList">
+            <list value-type="org.ggibizov.springlearn.Music">
+                <ref bean= "rapMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="popMusic"/>
+                <ref bean="classicalMusic"/>
+            </list>
+        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
